@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JGA 2027</title>
 <meta name="description" content="Alles zum Junggesellenabschied 2027: Programm, Tickets, Unterkunft, Kosten.">
-<meta name="theme-color" content="#0d3b2a">
+<meta name="theme-color" content="#082a1e">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
 
-<header class="topbar">
+<header class="topbar" id="topbar">
   <div class="wrap topbar-in">
     <a class="brand" href="#top" aria-label="Nach oben">JGA <span>2027</span></a>
     <nav class="nav" aria-label="Abschnitte">
@@ -29,88 +30,119 @@
   </div>
 </header>
 
-<div id="top"></div>
 <main id="inhalt">
-  <section class="hero">
-    <div class="dial" aria-hidden="true"></div>
-    <div class="wrap hero-in">
-      <p class="eyebrow" id="hero-eyebrow">Junggesellenabschied 2027</p>
-      <h1 id="hero-title">Vierundzwanzig Stunden.<br><em>Ein Wochenende.</em></h1>
-      <div class="rule"></div>
-      <p class="lead" id="hero-lead">Daten werden geladen.</p>
-      <div class="switch" role="tablist" aria-label="Rennen wählen" id="switch"></div>
-      <p class="decision" id="decision"></p>
-      <div class="countdown" id="countdown" aria-live="polite"></div>
+  <!-- Erste Seite: alles auf einen Blick -->
+  <section class="hero" id="top">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow intro" style="--d:0" id="hero-eyebrow">Junggesellenabschied 2027</p>
+        <h1 class="intro-title">
+          <span class="line"><span style="--d:1">Vierundzwanzig Stunden.</span></span>
+          <span class="line"><em style="--d:2">Ein Wochenende.</em></span>
+        </h1>
+        <div class="rule intro-rule"></div>
+        <p class="lead intro" style="--d:3" id="hero-lead">Daten werden geladen.</p>
+        <p class="hero-meta intro" style="--d:3" id="hero-meta"></p>
+
+        <div class="switch intro" style="--d:4" role="tablist" aria-label="Rennen wählen" id="switch">
+          <span class="switch-pill" aria-hidden="true"></span>
+        </div>
+        <p class="decision intro" style="--d:5" id="decision"></p>
+      </div>
+
+      <div class="chrono intro" style="--d:2" aria-hidden="true">
+        <svg viewBox="0 0 400 400" class="chrono-svg">
+          <defs>
+            <linearGradient id="hand" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#e6cf9d"/>
+              <stop offset="1" stop-color="#a9874a"/>
+            </linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="188" class="ring-outer"/>
+          <circle cx="200" cy="200" r="170" class="ring-inner"/>
+          <g id="ticks"></g>
+          <g id="numerals"></g>
+          <circle cx="200" cy="200" r="132" class="race-track"/>
+          <circle cx="200" cy="200" r="132" class="race-arc" id="race-arc"/>
+          <text x="200" y="150" class="chrono-label" text-anchor="middle">24 STUNDEN</text>
+          <text x="200" y="268" class="chrono-sub" text-anchor="middle" id="chrono-sub">START SA</text>
+          <g class="hand-hour" id="hand-hour"><rect x="197" y="110" width="6" height="96" rx="3"/></g>
+          <g class="hand-sweep"><line x1="200" y1="226" x2="200" y2="44"/><circle cx="200" cy="200" r="7"/></g>
+          <circle cx="200" cy="200" r="3" class="pin"/>
+        </svg>
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="glance-band">
+      <div class="wrap">
+        <div class="glance" id="glance"></div>
+      </div>
     </div>
   </section>
 
   <section class="updates-band">
-    <div class="wrap">
-      <div class="updates" id="updates"></div>
-    </div>
+    <div class="wrap"><div class="updates" id="updates"></div></div>
   </section>
 
-  <section class="block">
-    <div class="wrap">
-      <div class="facts" id="facts"></div>
-    </div>
-  </section>
-
-  <section class="block alt" id="programm">
-    <div class="wrap">
-      <div class="head"><p class="eyebrow">Ablauf</p><h2>Programm</h2></div>
-      <div class="days" id="days"></div>
-    </div>
-  </section>
-
-  <section class="block" id="tickets">
-    <div class="wrap">
-      <div class="head"><p class="eyebrow">Eintritt und Kartbahn</p><h2>Tickets</h2></div>
-      <div class="tickets" id="ticket-box"></div>
-    </div>
-  </section>
-
-  <section class="block alt" id="unterkunft">
-    <div class="wrap">
-      <div class="head"><p class="eyebrow">Alle mit Parkplatz für den Bus</p><h2>Unterkunft</h2></div>
-      <div class="filter" role="group" aria-label="Lage filtern" id="zone-filter">
-        <button type="button" data-zone="alle" aria-pressed="true">Alle</button>
-        <button type="button" data-zone="strecke" aria-pressed="false">Nahe Strecke</button>
-        <button type="button" data-zone="stadt" aria-pressed="false">In der Stadt</button>
+  <div id="event-content">
+    <section class="block" id="programm">
+      <div class="wrap">
+        <div class="head" data-reveal><p class="eyebrow">Ablauf</p><h2>Programm</h2><span class="head-rule"></span></div>
+        <div class="days" id="days"></div>
       </div>
-      <p class="availability" id="availability"></p>
-      <div class="stays" id="stays"></div>
-      <div class="live">
-        <h3>Weitere Unterkünfte live suchen</h3>
-        <p>Mit euren Daten, 6 Personen und Parkplatz Filter.</p>
-        <div class="live-links" id="live-links"></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="block" id="kosten">
-    <div class="wrap">
-      <div class="head"><p class="eyebrow">Pro Zahler, Bräutigam eingeladen</p><h2>Kosten</h2></div>
-      <div class="cost-grid">
-        <div class="table-wrap"><table class="costs" id="costs"></table></div>
-        <p class="note" id="cost-note"></p>
+    <section class="block alt" id="tickets">
+      <div class="wrap">
+        <div class="head" data-reveal><p class="eyebrow">Eintritt und Kartbahn</p><h2>Tickets</h2><span class="head-rule"></span></div>
+        <div class="tickets" id="ticket-box"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="block alt" id="essen">
-    <div class="wrap">
-      <div class="head"><p class="eyebrow">Gute Küche, kleine Bars</p><h2>Tafel und Bar</h2></div>
-      <div class="dine" id="dine"></div>
-    </div>
-  </section>
+    <section class="block" id="unterkunft">
+      <div class="wrap">
+        <div class="head" data-reveal><p class="eyebrow">Alle mit Parkplatz für den Bus</p><h2>Unterkunft</h2><span class="head-rule"></span></div>
+        <div class="filter" role="group" aria-label="Lage filtern" id="zone-filter">
+          <button type="button" data-zone="alle" aria-pressed="true">Alle</button>
+          <button type="button" data-zone="strecke" aria-pressed="false">Nahe Strecke</button>
+          <button type="button" data-zone="stadt" aria-pressed="false">In der Stadt</button>
+        </div>
+        <p class="availability" id="availability"></p>
+        <div class="stays" id="stays"></div>
+        <div class="live" data-reveal>
+          <h3>Weitere Unterkünfte live suchen</h3>
+          <p>Mit euren Daten, 6 Personen und Parkplatz Filter.</p>
+          <div class="live-links" id="live-links"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block alt" id="kosten">
+      <div class="wrap">
+        <div class="head" data-reveal><p class="eyebrow">Pro Zahler, Bräutigam eingeladen</p><h2>Kosten</h2><span class="head-rule"></span></div>
+        <div class="cost-grid" data-reveal>
+          <div class="table-wrap"><table class="costs" id="costs"></table></div>
+          <p class="note" id="cost-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="essen">
+      <div class="wrap">
+        <div class="head" data-reveal><p class="eyebrow">Gute Küche, kleine Bars</p><h2>Tafel und Bar</h2><span class="head-rule"></span></div>
+        <div class="dine" id="dine"></div>
+      </div>
+    </section>
+  </div>
 
   <section class="block dark" id="todo">
     <div class="wrap">
-      <div class="head"><p class="eyebrow">Vorbereitung</p><h2>To do und Packliste</h2></div>
+      <div class="head" data-reveal><p class="eyebrow">Vorbereitung</p><h2>To do und Packliste</h2><span class="head-rule"></span></div>
       <div class="todo-grid">
         <ul class="tasks" id="tasks"></ul>
-        <div class="pack">
+        <div class="pack" data-reveal>
           <h3>Packliste</h3>
           <p class="pack-hint">Zum Abhaken, wird nur auf deinem Gerät gespeichert.</p>
           <ul id="pack"></ul>

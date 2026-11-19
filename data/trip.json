@@ -67,7 +67,8 @@
               "zeit": "Abend",
               "text": "Steak auf dem heissen Stein in der Pistenklause, danach Drift Show und Bar."
             }
-          ]
+          ],
+          "kurz": "Anreise, Qualifying, Kartrennen"
         },
         {
           "tag": "Samstag",
@@ -90,7 +91,8 @@
               "zeit": "Nacht",
               "text": "Rennen in der Dunkelheit, XXL Pizza bei Pinocchio in Adenau."
             }
-          ]
+          ],
+          "kurz": "Rennstart, Nacht an der Nordschleife"
         },
         {
           "tag": "Sonntag",
@@ -109,7 +111,8 @@
               "zeit": "22:00",
               "text": "Ankunft in Landschlacht."
             }
-          ]
+          ],
+          "kurz": "Zieleinlauf, Heimfahrt"
         }
       ],
       "liveSuche": [
@@ -269,7 +272,8 @@
             ]
           }
         ]
-      }
+      },
+      "rennstartKurz": "Sa 15 bis 16 Uhr"
     },
     "spa": {
       "name": "24h Spa",
@@ -327,7 +331,8 @@
               "zeit": "Abend",
               "text": "Belgisches Bier in Stavelot oder Malmedy, Konzert im Fan Village."
             }
-          ]
+          ],
+          "kurz": "Anreise, Paddock, Kartrennen"
         },
         {
           "tag": "Samstag",
@@ -350,7 +355,8 @@
               "zeit": "Nacht",
               "text": "Rennen in der Dunkelheit, Konzert im Fan Village."
             }
-          ]
+          ],
+          "kurz": "Rennstart, Nacht an der Eau Rouge"
         },
         {
           "tag": "Sonntag",
@@ -369,7 +375,8 @@
               "zeit": "23:30",
               "text": "Ankunft in Landschlacht. Wer früher heim will, fährt um 12 Uhr und schaut das Finale im Livestream."
             }
-          ]
+          ],
+          "kurz": "Zieleinlauf, Heimfahrt"
         }
       ],
       "liveSuche": [
@@ -522,7 +529,8 @@
             ]
           }
         ]
-      }
+      },
+      "rennstartKurz": "Sa 16:30"
     }
   },
   "kostenHinweis": "Alle Beträge in CHF (1 EUR = 0.93 CHF), Gruppenkosten geteilt durch 5 Zahler. Der Bräutigam ist eingeladen. Essen und Trinken sind nicht eingerechnet: ca. 70 CHF pro Person und Tag, für den Bräutigam mitbezahlt ca. 210 CHF mehr pro Zahler.",
