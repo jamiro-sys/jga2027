@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JGA 2027</title>
-<meta name="description" content="Alles zum Junggesellenabschied 2027: Programm, Tickets, Unterkunft, Kosten.">
+<meta name="description" content="Junggesellenabschied 2027: Spa oder Nürburgring im Vergleich, mit Programm, Tickets, Unterkunft und Kosten.">
 <meta name="theme-color" content="#f3efe8">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,10 @@
   <div class="nav-in">
     <a class="brand" href="#top">JGA 2027</a>
     <nav class="links" aria-label="Abschnitte">
+      <a href="#vergleich">Vergleich</a>
       <a href="#programm">Programm</a>
       <a href="#tickets">Tickets</a>
+      <a href="#erlebnisse">Erlebnisse</a>
       <a href="#unterkunft">Unterkunft</a>
       <a href="#kosten">Kosten</a>
       <a href="#essen">Essen</a>
@@ -35,66 +37,62 @@
 <main id="inhalt">
   <section class="hero" id="top">
     <div class="hero-in" id="hero-in">
-      <p class="hero-eyebrow" id="hero-eyebrow">Junggesellenabschied 2027</p>
+      <p class="hero-eyebrow">Junggesellenabschied 2027</p>
       <h1 class="hero-title"><span class="grad">24 Stunden.</span></h1>
-      <p class="hero-tag">Ein Rennen. Sechs Freunde.<br>Ein Wochenende.</p>
-      <p class="hero-meta" id="hero-meta"></p>
-
-      <div class="seg" role="tablist" aria-label="Rennen wählen" id="switch">
-        <span class="seg-thumb" aria-hidden="true"></span>
-      </div>
+      <p class="hero-tag">Zwei Rennen zur Wahl.<br>Ein Wochenende.</p>
+      <p class="hero-meta" id="hero-meta">Sechs Freunde, ein Bus, ab Landschlacht.</p>
+      <a class="btn hero-cta" href="#vergleich">Zum Vergleich</a>
       <p class="decision" id="decision"></p>
     </div>
-
   </section>
 
-  <!-- Cockpit: Countdown als Drehzahlmesser -->
+  <!-- Cockpit: beide Countdowns nebeneinander -->
   <section class="cockpit" aria-label="Countdown bis zur Abfahrt">
     <div class="mstripe" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="wrap cockpit-in">
-      <div class="gauge reveal" aria-hidden="true">
-        <svg viewBox="0 0 300 300" id="gauge">
-          <circle cx="150" cy="150" r="128" class="g-face"/>
-          <path id="g-track" class="g-track"/>
-          <path id="g-red" class="g-red"/>
-          <path id="g-fill" class="g-fill"/>
-          <g id="g-ticks"></g>
-          <g id="g-nums"></g>
-          <g class="g-needle" id="g-needle"><path d="M147 150 L150 46 L153 150 Z"/></g>
-          <circle cx="150" cy="150" r="14" class="g-hub"/>
-        </svg>
-        <div class="g-readout">
-          <span class="g-days num" id="g-days">0</span>
-          <span class="g-unit">Tage</span>
-        </div>
-      </div>
-      <div class="cockpit-copy">
-        <p class="label light">Bis zur Abfahrt</p>
-        <div class="countdown" id="countdown" aria-live="polite"></div>
-        <dl class="specs" id="specs"></dl>
-      </div>
+    <div class="wrap">
+      <p class="label light cockpit-label">Bis zur Abfahrt</p>
+      <div class="gauges" id="gauges"></div>
     </div>
   </section>
 
-  <section class="sec gray" id="ueberblick">
+  <!-- Vergleich beider Rennen -->
+  <section class="sec" id="vergleich">
     <div class="wrap">
-      <h2 class="sec-title reveal">Auf einen Blick.</h2>
-      <div class="bento" id="glance"></div>
+      <h2 class="sec-title reveal">Spa oder Nürburgring? <span>Alles im direkten Vergleich.</span></h2>
+      <div class="compare reveal" id="compare"></div>
     </div>
   </section>
 
   <div id="event-content">
-    <section class="sec" id="programm">
+    <!-- Details der gewaehlten Variante -->
+    <div class="detailbar" id="details">
+      <div class="detailbar-in">
+        <p class="detailbar-title">Details für</p>
+        <div class="seg" role="tablist" aria-label="Rennen wählen" id="switch">
+          <span class="seg-thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="sec gray" id="programm">
       <div class="wrap">
         <h2 class="sec-title reveal">Programm. <span>Drei Tage, ein Rennen.</span></h2>
         <div class="days" id="days"></div>
       </div>
     </section>
 
-    <section class="sec gray" id="tickets">
+    <section class="sec" id="tickets">
       <div class="wrap">
         <h2 class="sec-title reveal">Tickets. <span>Nur offiziell kaufen.</span></h2>
         <div class="tickets" id="ticket-box"></div>
+      </div>
+    </section>
+
+    <section class="sec gray" id="erlebnisse">
+      <div class="wrap">
+        <h2 class="sec-title reveal">Erlebnisse. <span>Kart und mehr.</span></h2>
+        <p class="avail reveal" id="erlebnis-hint"></p>
+        <div class="dine" id="erlebnisse-list"></div>
       </div>
     </section>
 
@@ -102,9 +100,10 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <h2 class="sec-title">Unterkunft. <span>Alle mit Parkplatz für den Bus.</span></h2>
-          <div class="seg small" role="group" aria-label="Lage filtern" id="zone-filter">
+          <div class="seg small" role="group" aria-label="Unterkünfte filtern" id="zone-filter">
             <span class="seg-thumb" aria-hidden="true"></span>
             <button type="button" data-zone="alle" aria-pressed="true">Alle</button>
+            <button type="button" data-zone="airbnb" aria-pressed="false">Airbnb</button>
             <button type="button" data-zone="strecke" aria-pressed="false">Nahe Strecke</button>
             <button type="button" data-zone="stadt" aria-pressed="false">In der Stadt</button>
           </div>

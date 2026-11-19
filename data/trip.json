@@ -11,6 +11,10 @@
   "updates": [
     {
       "datum": "2026-11-19",
+      "text": "Neu: Vergleich beider Rennen auf der Startseite, Airbnbs mit Parkplatz, Erlebnisse ausser Kartfahren und weitere Restaurants."
+    },
+    {
+      "datum": "2026-11-19",
       "text": "Webseite ist online. Bitte bis Ende November sagen, ob ihr lieber an den Nürburgring oder nach Spa wollt."
     }
   ],
@@ -140,7 +144,8 @@
           "preis": "ab ca. 272 EUR pro Nacht",
           "status": "pruefen",
           "url": "https://www.holidu.de/d/49169883",
-          "linkLabel": "Angebot ansehen"
+          "linkLabel": "Angebot ansehen",
+          "plattform": "Holidu"
         },
         {
           "zone": "strecke",
@@ -153,7 +158,36 @@
           "hinweis": "Die Pistenklause ist im gleichen Haus.",
           "status": "pruefen",
           "url": "https://www.booking.com/hotel/de/am-tiergarten-nurburg.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
+        },
+        {
+          "zone": "strecke",
+          "plattform": "Airbnb",
+          "name": "Gemütliches Haus am Nürburgring",
+          "ort": "Wimbach, ca. 10 Min. zum Ring",
+          "typ": "Ganzes Haus",
+          "platz": "6 Gäste, 3 Schlafzimmer",
+          "parkplatz": "Gratis Parkplatz und grosse Garage",
+          "preis": "Preis live prüfen",
+          "hinweis": "Bewertung 4.88 aus 82 Bewertungen, Gäste Favorit.",
+          "status": "pruefen",
+          "url": "https://www.airbnb.ch/rooms/1052534?check_in=2027-05-28&check_out=2027-05-30&adults=6",
+          "linkLabel": "Auf Airbnb ansehen"
+        },
+        {
+          "zone": "strecke",
+          "plattform": "Airbnb",
+          "name": "Apartment Adenauer Forst",
+          "ort": "Adenau, 100 m zur Nordschleife",
+          "typ": "Ganze Wohnung",
+          "platz": "bis 8 Gäste, 3 Schlafzimmer, 2 Bäder",
+          "parkplatz": "Gratis Parkplatz beim Haus",
+          "preis": "Preis live prüfen",
+          "hinweis": "Bewertung 5.0, Gastgeberin ist Superhost. Self Check in mit PIN.",
+          "status": "pruefen",
+          "url": "https://www.airbnb.ch/rooms/35561813?check_in=2027-05-28&check_out=2027-05-30&adults=6",
+          "linkLabel": "Auf Airbnb ansehen"
         },
         {
           "zone": "strecke",
@@ -166,7 +200,8 @@
           "hinweis": "Telefon Hotel: +49 2691 309 0",
           "status": "pruefen",
           "url": "https://eifel-nuerburgring.dorint.com/en/overview/",
-          "linkLabel": "Offizielle Webseite"
+          "linkLabel": "Offizielle Webseite",
+          "plattform": "Hotel"
         },
         {
           "zone": "stadt",
@@ -178,7 +213,8 @@
           "preis": "ab ca. 112 EUR pro Zimmer und Nacht",
           "status": "pruefen",
           "url": "https://www.booking.com/hotel/de/vintage-am-bundesbank-bunker.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
         },
         {
           "zone": "stadt",
@@ -190,7 +226,8 @@
           "preis": "ab ca. 171 EUR pro Zimmer und Nacht",
           "status": "pruefen",
           "url": "https://www.booking.com/hotel/de/moselromantikhotelkesslermeyer.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
         },
         {
           "zone": "stadt",
@@ -202,39 +239,66 @@
           "preis": "ab ca. 87 EUR pro Zimmer und Nacht",
           "status": "pruefen",
           "url": "https://www.hotelspecials.de/de/rheinland-pfalz/cochem/parkplatz",
-          "linkLabel": "Angebot ansehen"
+          "linkLabel": "Angebot ansehen",
+          "plattform": "Hotel"
         }
       ],
       "essen": [
         {
           "ort": "Nürburg",
           "name": "Pistenklause",
-          "text": "Kultlokal voller Rennfotos und Autogramme. Steak auf dem heissen Stein, ab 16 Uhr, früh reservieren."
+          "text": "Kultlokal voller Rennfotos und Autogramme. Steak auf dem heissen Stein, ab 16 Uhr, früh reservieren.",
+          "url": "https://www.eifel.info/en/gastro/restaurant-im-hotel-cafe-am-tiergarten",
+          "stil": "Kult"
+        },
+        {
+          "ort": "Bahrweiler, 10 Min.",
+          "name": "Agnesen Hof",
+          "text": "Rustikaler Gutshof mit gehobener Küche, Rehbraten und Innenhof für Sommerabende. Ideal für das Abendessen mit dem Bräutigam.",
+          "url": "https://oversteer48.com/nurburgring-restaurants/",
+          "stil": "Abend mit dem Bräutigam"
         },
         {
           "ort": "Adenau",
           "name": "Pinocchio",
-          "text": "Pizza mit 60 cm für die ganze Runde. Vorher anrufen."
+          "text": "Pizza mit 60 cm für die ganze Runde. Vorher anrufen.",
+          "url": "https://oversteer48.com/nurburgring-restaurants/",
+          "stil": "Gruppe"
+        },
+        {
+          "ort": "Nürburg",
+          "name": "Nürburgring eSports Bar",
+          "text": "Bar mit Essen und Rennsimulatoren. Der Ort für einen Absacker mit Duell auf der Nordschleife.",
+          "url": "https://oversteer48.com/things-to-do-near-the-nurburgring/",
+          "stil": "Bar"
         },
         {
           "ort": "Adenau",
           "name": "Trattoria Ventisette",
-          "text": "Gutes Italienisch mit Blick auf die Strecke bei der Brücke Breidscheid."
+          "text": "Gutes Italienisch mit Blick auf die Strecke bei der Brücke Breidscheid.",
+          "url": "https://oversteer48.com/nurburgring-restaurants/",
+          "stil": "Italienisch"
         },
         {
           "ort": "Adenau",
           "name": "Café zur Nordschleife",
-          "text": "Currywurst direkt an der Strecke, schliesst um 19 Uhr."
+          "text": "Currywurst direkt an der Strecke, schliesst um 19 Uhr.",
+          "url": "https://oversteer48.com/nurburgring-restaurants/",
+          "stil": "Snack"
         },
         {
           "ort": "Nürburg",
           "name": "Paddock Restaurant",
-          "text": "Im Motorsport Hotel, bekannt für Schnitzel, Terrasse mit Blick auf die Burg."
+          "text": "Im Motorsport Hotel, bekannt für Schnitzel, Terrasse mit Blick auf die Burg.",
+          "url": "https://oversteer48.com/nurburgring-restaurants/",
+          "stil": "Klassiker"
         },
         {
           "ort": "Nordschleife",
           "name": "An der Strecke",
-          "text": "Grill und Bier bei Brünnchen und Pflanzgarten, mitten unter den Fans."
+          "text": "Grill und Bier bei Brünnchen und Pflanzgarten, mitten unter den Fans.",
+          "url": "https://www.24h-rennen.de/?p=95505",
+          "stil": "Fans"
         }
       ],
       "kosten": {
@@ -273,7 +337,59 @@
           }
         ]
       },
-      "rennstartKurz": "Sa 15 bis 16 Uhr"
+      "rennstartKurz": "Sa 15 bis 16 Uhr",
+      "verkaufKurz": "Vorverkauf ab ca. Ende November",
+      "erlebnisseHinweis": "Achtung: In der 24h Woche sind Nordschleife, Ring Taxi und Touristenfahrten gesperrt. Die Vorschläge hier gehen auch am Rennwochenende.",
+      "erlebnisse": [
+        {
+          "typ": "Kart",
+          "name": "Ring Kartbahn",
+          "ort": "Nürburg, 3 Min.",
+          "text": "Indoor Kartbahn direkt am Ring, wetterfest. Ohne Reservation.",
+          "preis": "15 EUR pro 10 Min.",
+          "url": "https://nuerburgring.de/experience/at-the-ring/ringkartbahn?locale=en"
+        },
+        {
+          "typ": "Simracing",
+          "name": "Nürburgring eSports Bar",
+          "ort": "Nürburg, 3 Min.",
+          "text": "Bewegliche Rennsimulatoren und eine Bar mit Essen. Ihr fahrt gegeneinander auf der Nordschleife, perfekt für den Abend.",
+          "preis": "Preis vor Ort",
+          "url": "https://oversteer48.com/things-to-do-near-the-nurburgring/"
+        },
+        {
+          "typ": "Brauerei",
+          "name": "Vulkan Brauerei Mendig",
+          "ort": "Mendig, ca. 35 Min.",
+          "text": "Führung durch den tiefsten Bierkeller der Welt, 30 m unter der Erde, dazu Brauerei und Brennerei mit Verkostung.",
+          "preis": "29 EUR pro Person",
+          "url": "https://gokonfetti.com/en-us/e/bierkeller-brauerei-fuehrung-in-mendig-xy4k0v/"
+        },
+        {
+          "typ": "Museum",
+          "name": "Ring Werk",
+          "ort": "Nürburg, 3 Min.",
+          "text": "Rennwagen, Motorräder und Trucks aus der Geschichte des Rings, gleich neben der Kartbahn.",
+          "preis": "Preis vor Ort",
+          "url": "https://oversteer48.com/things-to-do-near-the-nurburgring/"
+        },
+        {
+          "typ": "Action",
+          "name": "Sommerrodelbahn Altenahr",
+          "ort": "Altenahr, ca. 30 Min.",
+          "text": "Rodelbahn mit engen Kurven, ideal für ein kleines Rennen untereinander auf dem Heimweg ins Ahrtal.",
+          "preis": "Preis vor Ort",
+          "url": "https://oversteer48.com/things-to-do-near-the-nurburgring/"
+        },
+        {
+          "typ": "Ausflug",
+          "name": "Burg Eltz",
+          "ort": "Wierschem, ca. 50 Min.",
+          "text": "Eine der schönsten Burgen Deutschlands, gut kombinierbar mit einer Unterkunft in Cochem.",
+          "preis": "Preis vor Ort",
+          "url": "https://oversteer48.com/things-to-do-near-the-nurburgring/"
+        }
+      ]
     },
     "spa": {
       "name": "24h Spa",
@@ -405,7 +521,36 @@
           "hinweis": "Restaurant The Legends direkt über der Haarnadel La Source.",
           "status": "pruefen",
           "url": "https://www.hotels.com/ho361305/hotel-de-la-source-stavelot-belgium",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
+        },
+        {
+          "zone": "strecke",
+          "plattform": "Airbnb",
+          "name": "Neues Haus in Villers",
+          "ort": "Zwischen Stavelot und Malmedy, ca. 10 Min. zur Strecke",
+          "typ": "Ganzes Haus",
+          "platz": "6 Gäste, 3 Schlafzimmer, 2 Bäder",
+          "parkplatz": "Gratis Privatparkplatz plus Carport",
+          "preis": "Preis live prüfen",
+          "hinweis": "Bewertung 4.94, Superhost, Gäste Favorit.",
+          "status": "pruefen",
+          "url": "https://www.airbnb.ch/rooms/1448589806575888528?check_in=2027-06-25&check_out=2027-06-27&adults=6",
+          "linkLabel": "Auf Airbnb ansehen"
+        },
+        {
+          "zone": "strecke",
+          "plattform": "Airbnb",
+          "name": "Raidillon Gîte",
+          "ort": "Bei Malmedy, 7.5 km zur Strecke, 2 km ins Zentrum",
+          "typ": "Ganzes Haus",
+          "platz": "bis 10 Gäste",
+          "parkplatz": "Gratis Parkplatz beim Haus",
+          "preis": "Preis live prüfen",
+          "hinweis": "Gastgeber wohnt vor Ort und legt Wert auf Ruhe. Vorher kurz schreiben, dass ihr eine ruhige Gruppe seid.",
+          "status": "pruefen",
+          "url": "https://www.airbnb.ch/rooms/44338546?check_in=2027-06-25&check_out=2027-06-27&adults=6",
+          "linkLabel": "Auf Airbnb ansehen"
         },
         {
           "zone": "strecke",
@@ -418,7 +563,8 @@
           "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären, dass ihr eine ruhige Gruppe seid.",
           "status": "pruefen",
           "url": "https://en.ardennes-etape.be/holiday-houses-ardennes/Stavelot/Holiday-cottage-105357-01",
-          "linkLabel": "Angebot ansehen"
+          "linkLabel": "Angebot ansehen",
+          "plattform": "Ferienhaus"
         },
         {
           "zone": "strecke",
@@ -431,7 +577,8 @@
           "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären.",
           "status": "pruefen",
           "url": "https://en.ardennes-etape.be/holiday-houses-ardennes/Stavelot/Holiday-cottage-107893-01/",
-          "linkLabel": "Angebot ansehen"
+          "linkLabel": "Angebot ansehen",
+          "plattform": "Ferienhaus"
         },
         {
           "zone": "stadt",
@@ -444,7 +591,8 @@
           "hinweis": "Alle sechs in einem Loft, ideal für die Gruppe.",
           "status": "pruefen",
           "url": "https://ie.hotels.com/ho600769/le-val-d-arimont-hotel-malmedy-belgium",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
         },
         {
           "zone": "stadt",
@@ -457,7 +605,8 @@
           "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären.",
           "status": "pruefen",
           "url": "https://www.ardennes-etape.co.uk/holiday-houses-ardennes/Spa/Holiday-cottage-107789-01",
-          "linkLabel": "Angebot ansehen"
+          "linkLabel": "Angebot ansehen",
+          "plattform": "Ferienhaus"
         },
         {
           "zone": "stadt",
@@ -469,29 +618,45 @@
           "preis": "Preis live prüfen",
           "status": "pruefen",
           "url": "https://au.hotels.com/ho192784/radisson-blu-balmoral-hotel-spa-spa-belgium",
-          "linkLabel": "Verfügbarkeit prüfen"
+          "linkLabel": "Verfügbarkeit prüfen",
+          "plattform": "Hotel"
         }
       ],
       "essen": [
         {
           "ort": "Francorchamps",
           "name": "Le Formule Un",
-          "text": "Bar und Restaurant 50 m neben der Strecke. Steak Frites, Boulets liégeois und Bordeaux vom eigenen Weingut."
+          "text": "Bar und Restaurant 50 m neben der Strecke. Steak Frites, Boulets liégeois und Bordeaux vom eigenen Weingut.",
+          "url": "https://www.spa-francorchamps.be/en/directory/restaurants/181_le-formule-un",
+          "stil": "Kult"
+        },
+        {
+          "ort": "Francorchamps",
+          "name": "Le Roannay",
+          "text": "Ein Michelin Stern direkt an der Rennstrecke, dazu eine Bar in der historischen Scheune. Ideal für das Abendessen mit dem Bräutigam.",
+          "url": "https://guide.michelin.com/ch/de/liege/francorchamps/restaurant/le-roannay",
+          "stil": "Abend mit dem Bräutigam"
         },
         {
           "ort": "Stavelot",
           "name": "The Legends",
-          "text": "Im Hôtel de la Source über der Haarnadel La Source. Menüs ab ca. 39 EUR, ideal für den Abend mit dem Bräutigam."
+          "text": "Im Hôtel de la Source über der Haarnadel La Source. Menüs ab ca. 39 EUR, ideal für den Abend mit dem Bräutigam.",
+          "url": "https://tourismestavelot.be/en/node/4748",
+          "stil": "An der Strecke"
         },
         {
-          "ort": "Stavelot, Malmedy",
-          "name": "Brasserien",
-          "text": "Belgisches Bier vom Fass, Fritten und Ardennen Schinken."
+          "ort": "Malmedy",
+          "name": "Brasserie de Bellevaux",
+          "text": "Taverne der Familienbrauerei mit eigenem Bier vom Fass, Käse, Schinken und geräucherter Forelle aus der Region.",
+          "url": "https://visitwallonia.com/en-gb/product/attractions/activites/brewery/the-brasserie-de-bellevaux-a-family-microbrewery-in-malmedy/6511",
+          "stil": "Bier"
         },
         {
           "ort": "An der Strecke",
           "name": "Fan Village",
-          "text": "Foodtrucks und Konzerte von Donnerstag bis Samstag."
+          "text": "Foodtrucks und Konzerte von Donnerstag bis Samstag.",
+          "url": "https://www.crowdstrike24hoursofspa.com/entry-tickets",
+          "stil": "Fans"
         }
       ],
       "kosten": {
@@ -530,7 +695,51 @@
           }
         ]
       },
-      "rennstartKurz": "Sa 16:30"
+      "rennstartKurz": "Sa 16:30",
+      "verkaufKurz": "Läuft bereits",
+      "erlebnisseHinweis": "Taxi Runden auf der Rennstrecke gibt es in der Rennwoche nicht. Die Vorschläge hier gehen auch am Rennwochenende, Zeiten vorher kurz prüfen.",
+      "erlebnisse": [
+        {
+          "typ": "Kart",
+          "name": "Karting Spa Francorchamps",
+          "ort": "Im Streckengelände",
+          "text": "Outdoor Kartbahn mit 1092 m, Rundenzeiten live im Lenkrad. Online reservieren.",
+          "preis": "55 EUR pro 30 Min.",
+          "url": "https://www.francorchamps-karting.be/reservation.html"
+        },
+        {
+          "typ": "Museum",
+          "name": "Musée du Circuit",
+          "ort": "Abtei Stavelot, ca. 10 Min.",
+          "text": "Das Museum der Rennstrecke Spa Francorchamps mit Autos und Motorrädern aus über 100 Jahren Renngeschichte.",
+          "preis": "Eintritt Abtei",
+          "url": "https://abbayedestavelot.be/en/forfait/la-legende-mythique-du-circuit-de-spa-francorchamps"
+        },
+        {
+          "typ": "Brauerei",
+          "name": "Brasserie de Bellevaux",
+          "ort": "Malmedy, ca. 15 Min.",
+          "text": "Familienbrauerei auf einem alten Bauernhof. Führung, Verkostung in der Taverne, dazu Käse und Malmedy Charcuterie.",
+          "preis": "Preis auf Anfrage",
+          "url": "https://visitwallonia.com/en-gb/product/attractions/activites/brewery/the-brasserie-de-bellevaux-a-family-microbrewery-in-malmedy/6511"
+        },
+        {
+          "typ": "Action",
+          "name": "Kajak auf der Amblève",
+          "ort": "Coo, ca. 15 Min.",
+          "text": "Rund 2.5 Stunden von Coo nach Cheneux, Rückfahrt mit dem Bus. Letzte Abfahrt 15 Uhr.",
+          "preis": "23 EUR plus 4 EUR Bus",
+          "url": "https://365.be/en/attractions/get-moving-kayaks-coo-stavelot-coo-adventure/"
+        },
+        {
+          "typ": "Erholung",
+          "name": "Thermes de Spa",
+          "ort": "Spa, ca. 15 Min.",
+          "text": "Thermalbad über der Stadt. Perfekt für den Sonntagmorgen nach der langen Rennnacht.",
+          "preis": "Preis vor Ort",
+          "url": "https://visitwallonia.com/en-gb/3/where-to-go/walloon-towns-and-cities/spa/main-events"
+        }
+      ]
     }
   },
   "kostenHinweis": "Alle Beträge in CHF (1 EUR = 0.93 CHF), Gruppenkosten geteilt durch 5 Zahler. Der Bräutigam ist eingeladen. Essen und Trinken sind nicht eingerechnet: ca. 70 CHF pro Person und Tag, für den Bräutigam mitbezahlt ca. 210 CHF mehr pro Zahler.",

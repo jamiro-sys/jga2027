@@ -33,6 +33,7 @@
     var per = totals.map(function (t) { return Math.round(t / d.zahler / 5) * 5; });
     return { totals: totals, per: per, lo: Math.min.apply(null, per), hi: Math.max.apply(null, per) };
   }
+  function ticketEur(ev) { return +((ev.tickets.preis.match(/^[\d.,]+/) || ["0"])[0]); }
   function countUp(el, to) {
     if (reduce) { el.textContent = chf(to); return; }
     var t0 = performance.now(), dur = 1300;
@@ -51,17 +52,12 @@
       el.classList.add("in");
       io.unobserve(el);
       each(el.querySelectorAll("[data-count]"), function (x) { countUp(x, +x.getAttribute("data-count")); });
-      each(el.querySelectorAll("[data-w]"), function (x) { x.style.width = x.getAttribute("data-w") + "%"; });
     });
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }) : null;
 
   function observe(root) {
     each((root || document).querySelectorAll(".reveal:not(.in)"), function (el) {
-      if (io) io.observe(el);
-      else {
-        el.classList.add("in");
-        each(el.querySelectorAll("[data-w]"), function (x) { x.style.width = x.getAttribute("data-w") + "%"; });
-      }
+      if (io) io.observe(el); else el.classList.add("in");
     });
   }
 
@@ -74,21 +70,16 @@
     thumb.style.transform = "translateX(" + (on.offsetLeft - 3) + "px)";
   }
 
-  /* ---------- Drehzahlmesser ---------- */
+  /* ---------- Drehzahlmesser (zwei Stueck) ---------- */
   var G = { cx: 150, cy: 150, r: 112, a0: -135, a1: 135, max: 8 };
-  function pt(a, r) {
-    var rad = a * Math.PI / 180;
-    return [G.cx + r * Math.sin(rad), G.cy - r * Math.cos(rad)];
-  }
+  function pt(a, r) { var rad = a * Math.PI / 180; return [G.cx + r * Math.sin(rad), G.cy - r * Math.cos(rad)]; }
   function arcPath(from, to, r) {
     var s = pt(from, r), e = pt(to, r), large = (to - from) > 180 ? 1 : 0;
     return "M" + s[0].toFixed(2) + " " + s[1].toFixed(2) + " A" + r + " " + r + " 0 " + large + " 1 " + e[0].toFixed(2) + " " + e[1].toFixed(2);
   }
   function valToAngle(v) { return G.a0 + (G.a1 - G.a0) * (v / G.max); }
 
-  function buildGauge() {
-    $("g-track").setAttribute("d", arcPath(G.a0, G.a1, G.r));
-    $("g-red").setAttribute("d", arcPath(valToAngle(6.5), G.a1, G.r));
+  function gaugeSvg() {
     var ticks = "", nums = "", k = 0;
     for (var v = 0; v <= G.max; v += 0.5) {
       var a = valToAngle(v), major = v % 1 === 0;
@@ -99,56 +90,118 @@
         nums += '<text class="g-num' + (v >= 7 ? " red" : "") + '" style="--i:' + v + '" x="' + pn[0].toFixed(1) + '" y="' + (pn[1] + 6).toFixed(1) + '" text-anchor="middle">' + v + "</text>";
       }
     }
-    $("g-ticks").innerHTML = ticks;
-    $("g-nums").innerHTML = nums;
+    return '<svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="128" class="g-face"/>' +
+      '<path class="g-track" d="' + arcPath(G.a0, G.a1, G.r) + '"/>' +
+      '<path class="g-red" d="' + arcPath(valToAngle(6.5), G.a1, G.r) + '"/>' +
+      '<path class="g-fill"/>' + ticks + nums +
+      '<g class="g-needle"><path d="M147 150 L150 46 L153 150 Z"/></g><circle cx="150" cy="150" r="14" class="g-hub"/></svg>';
   }
 
-  function setGauge(ev, d) {
-    // Die Nadel dreht hoch, je naeher die Abfahrt kommt
-    var from = new Date(d.stand + "T00:00:00"), to = new Date(ev.abreise), now = new Date();
-    var p = Math.max(0.04, Math.min(1, (now - from) / (to - from)));
-    var target = valToAngle(p * G.max);
-    var needle = $("g-needle"), fill = $("g-fill");
-    fill.setAttribute("d", arcPath(G.a0, target + 0.01, G.r));
-    var len = fill.getTotalLength ? fill.getTotalLength() : 0;
-    fill.style.strokeDasharray = len;
-    fill.style.strokeDashoffset = len;
-    needle.style.transition = "none";
-    needle.style.transform = "rotate(" + G.a0 + "deg)";
-    void needle.getBoundingClientRect();
-    needle.style.transition = "";
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        needle.style.transform = "rotate(" + target + "deg)";
-        fill.style.strokeDashoffset = 0;
-      });
-    });
-  }
-
-  /* ---------- Countdown ---------- */
-  var timer = null;
-  function renderCountdown(ev) {
-    if (timer) clearInterval(timer);
-    var box = $("countdown"), last = {};
-    box.innerHTML = ["Tage", "Std", "Min", "Sek"].map(function (l) {
-      return '<div><strong class="num">0</strong><span>' + l + "</span></div>";
+  function renderGauges(d) {
+    var keys = Object.keys(d.events);
+    $("gauges").innerHTML = keys.map(function (k) {
+      var ev = d.events[k];
+      return '<div class="gcol reveal" data-ev="' + esc(k) + '"><div class="gauge" aria-hidden="true">' + gaugeSvg() +
+        '<div class="g-readout"><span class="g-days num">0</span><span class="g-unit">Tage</span></div></div>' +
+        '<p class="gname">' + esc(ev.name) + '</p><p class="gdate">' + esc(ev.reise) + "</p>" +
+        '<div class="gcount" aria-live="off">' + ["Tage", "Std", "Min", "Sek"].map(function (l) { return '<div><strong class="num">0</strong><span>' + l + "</span></div>"; }).join("") + "</div></div>";
     }).join("");
-    var cells = box.querySelectorAll("strong");
+
+    // Nadeln hochdrehen: je naeher die Abfahrt, desto hoeher die Drehzahl
+    each($("gauges").querySelectorAll(".gcol"), function (col) {
+      var ev = d.events[col.getAttribute("data-ev")];
+      var from = new Date(d.stand + "T00:00:00"), to = new Date(ev.abreise);
+      var p = Math.max(0.04, Math.min(1, (new Date() - from) / (to - from)));
+      var target = valToAngle(p * G.max);
+      var needle = col.querySelector(".g-needle"), fill = col.querySelector(".g-fill");
+      fill.setAttribute("d", arcPath(G.a0, target + 0.01, G.r));
+      var len = fill.getTotalLength ? fill.getTotalLength() : 0;
+      fill.style.strokeDasharray = len;
+      fill.style.strokeDashoffset = len;
+      needle.style.transform = "rotate(" + G.a0 + "deg)";
+      col.addEventListener("transitionend", function () {}, { once: true });
+      var go = function () {
+        setTimeout(function () {
+          needle.style.transform = "rotate(" + target + "deg)";
+          fill.style.strokeDashoffset = 0;
+        }, reduce ? 0 : 250);
+      };
+      if (io) {
+        var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { go(); o.disconnect(); } }, { threshold: 0.3 });
+        o.observe(col);
+      } else go();
+    });
+
+    var cols = $("gauges").querySelectorAll(".gcol"), last = [];
     function tick() {
-      var diff = new Date(ev.abreise) - new Date();
-      if (diff <= 0) { box.innerHTML = '<div><strong>Los</strong><span>Gute Fahrt</span></div>'; $("g-days").textContent = "0"; clearInterval(timer); return; }
-      var v = [Math.floor(diff / 864e5), Math.floor(diff / 36e5) % 24, Math.floor(diff / 6e4) % 60, Math.floor(diff / 1e3) % 60];
-      v.forEach(function (n, i) {
-        var txt = i === 0 ? String(n) : (n < 10 ? "0" : "") + n;
-        if (last[i] === txt) return;
-        cells[i].textContent = txt;
-        if (!reduce && last[i] !== undefined) { cells[i].classList.remove("flip"); void cells[i].offsetWidth; cells[i].classList.add("flip"); }
-        last[i] = txt;
+      each(cols, function (col, ci) {
+        var ev = d.events[col.getAttribute("data-ev")];
+        var diff = Math.max(0, new Date(ev.abreise) - new Date());
+        var v = [Math.floor(diff / 864e5), Math.floor(diff / 36e5) % 24, Math.floor(diff / 6e4) % 60, Math.floor(diff / 1e3) % 60];
+        var cells = col.querySelectorAll(".gcount strong");
+        last[ci] = last[ci] || {};
+        v.forEach(function (n, i) {
+          var txt = i === 0 ? String(n) : (n < 10 ? "0" : "") + n;
+          if (last[ci][i] === txt) return;
+          cells[i].textContent = txt;
+          if (!reduce && last[ci][i] !== undefined) { cells[i].classList.remove("flip"); void cells[i].offsetWidth; cells[i].classList.add("flip"); }
+          last[ci][i] = txt;
+        });
+        col.querySelector(".g-days").textContent = v[0];
       });
-      $("g-days").textContent = v[0];
     }
     tick();
-    timer = setInterval(tick, 1000);
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- Vergleich ---------- */
+  function renderCompare(d) {
+    var keys = Object.keys(d.events), evs = keys.map(function (k) { return d.events[k]; });
+    var stripe = '<span class="t-stripe" aria-hidden="true"><i></i><i></i><i></i></span>';
+    var ci = evs.map(function (ev) { return costInfo(ev, d); });
+    var km = evs.map(function (ev) { return +((ev.distanz.match(/(\d+)\s*km/) || [0, 0])[1]); });
+    var tk = evs.map(ticketEur);
+    function best(vals, i) { var m = Math.min.apply(null, vals); return vals[i] === m && vals.some(function (x) { return x !== m; }); }
+
+    var head = '<div class="cmp-head">' + evs.map(function (ev, i) {
+      return '<div class="cmp-col">' + stripe + '<p class="cmp-name">' + esc(ev.name) + '</p><p class="cmp-place">' + esc(ev.ort) + '</p><p class="cmp-date num">' + esc(ev.reise.replace(/ 20\d\d$/, "")) + "</p>" +
+        '<a class="btn" href="#details" data-pick="' + esc(keys[i]) + '">Details ansehen</a></div>';
+    }).join("") + "</div>";
+
+    function row(label, cells) {
+      return '<div class="cmp-row"><p class="cmp-label">' + esc(label) + '</p><div class="cmp-cells">' + cells.map(function (c) { return "<div>" + c + "</div>"; }).join("") + "</div></div>";
+    }
+    var rows = [
+      row("Pro Zahler", evs.map(function (ev, i) {
+        return '<span class="cmp-big num"><span data-count="' + ci[i].lo + '">' + chf(ci[i].lo) + "</span><small>bis " + chf(ci[i].hi) + ' CHF</small></span>' + (best(ci.map(function (c) { return c.lo; }), i) ? '<span class="win">Günstiger</span>' : "");
+      })),
+      row("Rennen", evs.map(function (ev) { return esc(ev.rennen); })),
+      row("Fahrt ab " + d.start.replace(/ TG$/, ""), evs.map(function (ev, i) {
+        return '<span class="cmp-big num">' + km[i] + "<small>km</small></span>" + '<span class="cmp-sub">' + esc((ev.distanz.match(/[\d.]+ Std\./) || [""])[0]) + "</span>" + (best(km, i) ? '<span class="win">Kürzer</span>' : "");
+      })),
+      row("Ticket pro Person", evs.map(function (ev, i) {
+        return '<span class="cmp-big num">' + tk[i] + '<small>EUR</small></span><span class="cmp-sub">' + esc(ev.verkaufKurz || "") + "</span>";
+      })),
+      row("Unterkünfte mit Parkplatz", evs.map(function (ev) {
+        var air = ev.unterkuenfte.filter(function (u) { return u.plattform === "Airbnb"; }).length;
+        return '<span class="cmp-big num">' + ev.unterkuenfte.length + '</span><span class="cmp-sub">davon ' + air + " Airbnb</span>";
+      })),
+      row("Erlebnisse", evs.map(function (ev) { return esc((ev.erlebnisse || []).slice(0, 3).map(function (e) { return e.name; }).join(", ")); })),
+      row("Abend mit dem Bräutigam", evs.map(function (ev) {
+        var f = (ev.essen || []).filter(function (e) { return /Bräutigam/.test(e.stil || ""); })[0] || ev.essen[0];
+        return "<b>" + esc(f.name) + '</b><span class="cmp-sub">' + esc(f.ort) + "</span>";
+      })),
+      row("Stimmung", evs.map(function (ev, i) {
+        return i === 0 ? "Kult an der Nordschleife, Racer Dörfer, Grill bei den Fans" : "Schönste Strecke der Welt, Fan Village mit Konzerten, Ardennen Brasserien";
+      }))
+    ];
+    $("compare").innerHTML = head + rows.join("");
+
+    $("compare").addEventListener("click", function (e) {
+      var a = e.target.closest("[data-pick]");
+      if (!a) return;
+      setEvent(a.getAttribute("data-pick"), true);
+    });
   }
 
   /* ---------- Einmalige Teile ---------- */
@@ -165,7 +218,7 @@
     $("decision").textContent = (d.entscheid && d.events[d.entscheid]) ? "Entschieden: " + d.events[d.entscheid].name : (d.entscheidHinweis || "");
 
     var latest = (d.updates || [])[0];
-    if (latest) $("ribbon").innerHTML = "<b>Neu.</b> " + esc(latest.text) + ' <a href="#todo">Alle Updates ›</a>';
+    if (latest) $("ribbon").innerHTML = "<b>Neu.</b> " + esc(latest.text.replace(/^Neu:\s*/, "")) + ' <a href="#todo">Alle Updates ›</a>';
     else $("ribbon").hidden = true;
 
     $("updates").innerHTML = (d.updates || []).map(function (u) {
@@ -216,7 +269,8 @@
     car.addEventListener("scroll", updateArrows, { passive: true });
     window.addEventListener("resize", function () { placeThumb($("switch")); placeThumb(zf); updateArrows(); });
 
-    buildGauge();
+    renderGauges(d);
+    renderCompare(d);
   }
 
   function updateArrows() {
@@ -225,36 +279,15 @@
     $("next").disabled = car.scrollLeft + car.clientWidth >= car.scrollWidth - 8;
   }
 
-  /* ---------- Auf einen Blick (Bento) ---------- */
-  function renderGlance(ev, d) {
-    var ci = costInfo(ev, d);
-    var list = d.checkliste || [];
-    var done = list.filter(function (t) { return t.erledigt; }).length;
-    var next = list.filter(function (t) { return !t.erledigt; })[0];
-    var near = ev.unterkuenfte.filter(function (u) { return u.zone === "strecke"; }).length;
-    var price = (ev.tickets.preis.match(/^[\d.,]+/) || ["?"])[0];
-    var stripe = '<span class="t-stripe" aria-hidden="true"><i></i><i></i><i></i></span>';
-
-    $("glance").innerHTML = [
-      '<a class="tile w2 reveal" style="--i:0" href="#programm"><span class="t-label">Programm</span><span class="t-big">' + esc(ev.reise.replace(/ 20\d\d$/, "")) + '</span><span class="t-sub">' + esc(ev.rennen) + '</span><ul class="t-days">' +
-        ev.programm.map(function (p) { return "<li><b>" + esc(p.tag.slice(0, 2).toUpperCase()) + "</b><span>" + esc(p.kurz || "") + "</span></li>"; }).join("") +
-        '</ul><span class="t-more">Zum Programm</span></a>',
-      '<a class="tile w2 dark reveal" style="--i:1" href="#kosten">' + stripe + '<span class="t-label">Pro Zahler</span><span class="t-big tech"><span data-count="' + ci.lo + '">' + chf(ci.lo) + '</span> bis <span data-count="' + ci.hi + '">' + chf(ci.hi) + '</span><small>CHF</small></span><span class="t-sub">' + d.teilnehmer + " Personen, " + d.zahler + ' zahlen. Der Bräutigam ist eingeladen.</span><span class="t-more">Zu den Kosten</span></a>',
-      '<a class="tile reveal" style="--i:2" href="#tickets"><span class="t-label">Ticket</span><span class="t-big tech">' + esc(price) + '<small>EUR</small></span><span class="t-sub">pro Person, offene Tribünen inklusive.</span><span class="t-more">Tickets</span></a>',
-      '<a class="tile reveal" style="--i:3" href="#unterkunft"><span class="t-label">Unterkunft</span><span class="t-big tech">' + ev.unterkuenfte.length + '</span><span class="t-sub">mit Parkplatz. ' + near + " nahe der Strecke, " + (ev.unterkuenfte.length - near) + ' in der Stadt.</span><span class="t-more">Ansehen</span></a>',
-      '<a class="tile w2 reveal" style="--i:4" href="#essen"><span class="t-label">Essen und Bars</span><span class="t-big">' + esc(ev.essen[0].name) + '</span><span class="t-sub">' + esc(ev.essen[0].text) + " Dazu " + (ev.essen.length - 1) + ' weitere Adressen.</span><span class="t-more">Alle Adressen</span></a>',
-      '<a class="tile w4 reveal" style="--i:5" href="#todo"><span class="t-label">To do</span><span class="t-big">' + done + " von " + list.length + ' erledigt</span><div class="t-bar"><i data-w="' + Math.max(3, list.length ? Math.round(done / list.length * 100) : 0) + '"></i></div><span class="t-sub">' + (next ? "Als Nächstes: " + esc(next.text) : "Alles erledigt.") + '</span><span class="t-more">Zur Liste</span></a>'
-    ].join("");
-  }
-
   /* ---------- Unterkuenfte ---------- */
   function renderStays(ev) {
     var zoneLabel = { strecke: "Nahe Strecke", stadt: "In der Stadt" };
     var statusLabel = { frei: "Verfügbar", voll: "Ausgebucht", pruefen: "Live prüfen" };
     $("stays").innerHTML = ev.unterkuenfte.map(function (u) {
-      var st = u.status || "pruefen";
-      return '<article class="stay" data-zone="' + esc(u.zone) + '">' +
+      var st = u.status || "pruefen", plat = u.plattform || "";
+      return '<article class="stay" data-zone="' + esc(u.zone) + '" data-plat="' + esc(plat.toLowerCase()) + '">' +
         '<div class="stay-top"><span class="label">' + esc(zoneLabel[u.zone] || "") + '</span><span class="chip ' + esc(st) + '">' + esc(statusLabel[st] || st) + "</span></div>" +
+        (plat ? '<span class="plat ' + esc(plat.toLowerCase()) + '">' + esc(plat) + "</span>" : "") +
         "<h3>" + esc(u.name) + '</h3><p class="where">' + esc(u.ort) + "</p>" +
         '<ul class="facts"><li><span>Art</span><span>' + esc(u.typ) + (u.platz ? ", " + esc(u.platz) : "") + '</span></li>' +
         '<li class="park"><span>Parkplatz</span><span>' + esc(u.parkplatz) + "</span></li>" +
@@ -267,46 +300,50 @@
   }
   function filterStays() {
     each($("stays").querySelectorAll(".stay"), function (s) {
-      s.classList.toggle("hide", state.zone !== "alle" && s.getAttribute("data-zone") !== state.zone);
+      var z = state.zone, show = z === "alle" || (z === "airbnb" ? s.getAttribute("data-plat") === "airbnb" : s.getAttribute("data-zone") === z);
+      s.classList.toggle("hide", !show);
     });
     $("stays").scrollLeft = 0;
     updateArrows();
   }
 
-  /* ---------- Variante darstellen ---------- */
+  function cards(list, withPrice) {
+    return list.map(function (e, i) {
+      var feature = /Bräutigam/.test(e.stil || "");
+      var tag = e.typ || e.stil || "";
+      return '<div class="eat reveal' + (feature ? " feature" : "") + '" style="--i:' + (i % 3) + '"><div class="eat-top"><span class="label">' + esc(e.ort) + "</span>" +
+        (tag ? '<span class="chip' + (feature ? "" : " blue") + '">' + esc(tag) + "</span>" : "") + "</div>" +
+        "<h3>" + esc(e.name) + "</h3><p>" + esc(e.text) + "</p>" +
+        (withPrice && e.preis ? '<p class="price-line">' + esc(e.preis) + "</p>" : "") +
+        (e.url ? more(e.url, "Mehr erfahren") : "") + "</div>";
+    }).join("");
+  }
+
+  /* ---------- Details der gewaehlten Variante ---------- */
   function renderEvent() {
     var d = state.data, ev = d.events[state.event], ci = costInfo(ev, d);
     document.title = "JGA 2027 · " + ev.name;
-    $("hero-eyebrow").textContent = "Junggesellenabschied 2027 · " + ev.ort;
-    $("hero-meta").textContent = ev.reise + " · " + ev.distanz.replace(/^ca\. /, "") + " ab " + d.start.replace(/ TG$/, "");
 
     var sw = $("switch");
     each(sw.querySelectorAll("button"), function (b) { b.setAttribute("aria-selected", b.getAttribute("data-event") === state.event ? "true" : "false"); });
     placeThumb(sw);
-
-    $("specs").innerHTML =
-      "<div><dt>Reise</dt><dd>" + esc(ev.reise.replace(/ 20\d\d$/, "")) + "</dd></div>" +
-      "<div><dt>Rennstart</dt><dd>" + esc(ev.rennstartKurz) + "</dd></div>" +
-      "<div><dt>Fahrt ab " + esc(d.start.replace(/ TG$/, "")) + "</dt><dd>" + esc(ev.distanz.replace(/^ca\. /, "")) + "</dd></div>" +
-      "<div><dt>Pro Zahler</dt><dd>" + chf(ci.lo) + " bis " + chf(ci.hi) + " CHF</dd></div>";
-
-    setGauge(ev, d);
-    renderCountdown(ev);
-    renderGlance(ev, d);
 
     $("days").innerHTML = ev.programm.map(function (day, i) {
       return '<div class="day reveal" style="--i:' + i + '"><div class="day-head"><h3>' + esc(day.tag) + '</h3><span class="date">' + esc(day.datum) + "</span></div>" +
         day.punkte.map(function (p) { return '<div class="slot' + (p.highlight ? " key" : "") + '"><time>' + esc(p.zeit) + "</time><p>" + esc(p.text) + "</p></div>"; }).join("") + "</div>";
     }).join("");
 
-    var t = ev.tickets, k = ev.kart, eur = (t.preis.match(/^[\d.,]+/) || [""])[0];
+    var t = ev.tickets, k = ev.kart;
     $("ticket-box").innerHTML =
-      '<article class="card reveal"><span class="label">Rennticket</span><h3>' + esc(t.titel) + '</h3><p class="price num">' + esc(eur) + "<small>EUR pro Person" + (/2026/.test(t.preis) ? ", Preis 2026" : "") + "</small></p>" +
+      '<article class="card reveal"><span class="label">Rennticket</span><h3>' + esc(t.titel) + '</h3><p class="price num">' + ticketEur(ev) + "<small>EUR pro Person" + (/2026/.test(t.preis) ? ", Preis 2026" : "") + "</small></p>" +
       "<dl><div><dt>Inklusive</dt><dd>" + esc(t.inklusive) + "</dd></div><div><dt>Verkauf</dt><dd>" + esc(t.status) + "</dd></div></dl>" +
       '<p class="warn">' + esc(t.warnung) + "</p>" +
       '<div class="btns">' + t.links.map(function (l, i) { return btn(l.url, l.label, i ? "ghost" : ""); }).join("") + "</div></article>" +
       '<article class="card dark reveal" style="--i:1"><span class="t-stripe" aria-hidden="true"><i></i><i></i><i></i></span><span class="label light">Kartrennen</span><h3>' + esc(k.name) + '</h3><p class="muted">' + esc(k.text) + "</p>" +
-      '<p class="tel">' + esc(k.telefon) + '</p><div class="btns">' + btn(k.url, "Zur Kartbahn") + "</div></article>";
+      '<p class="tel">' + esc(k.telefon) + '</p><div class="btns">' + btn(k.url, "Zur Kartbahn") + btn("#erlebnisse", "Alternativen", "ghost").replace(' target="_blank" rel="noopener"', "") + "</div></article>";
+
+    $("erlebnis-hint").textContent = ev.erlebnisseHinweis || "";
+    $("erlebnisse-list").innerHTML = cards(ev.erlebnisse || [], true);
 
     renderStays(ev);
     $("live-links").innerHTML = ev.liveSuche.map(function (l) { return more(l.url, l.label); }).join("");
@@ -321,9 +358,7 @@
       c.zeilen.map(function (z) { return "<tr><td>" + esc(z.posten) + "</td>" + z.werte.map(function (w) { return "<td>" + chf(w) + "</td>"; }).join("") + "</tr>"; }).join("") +
       '<tr class="total"><td>Total</td>' + ci.totals.map(function (x) { return "<td>" + chf(x) + "</td>"; }).join("") + "</tr></tbody>";
 
-    $("dine").innerHTML = ev.essen.map(function (e, i) {
-      return '<div class="eat reveal" style="--i:' + (i % 3) + '"><span class="label">' + esc(e.ort) + "</span><h3>" + esc(e.name) + "</h3><p>" + esc(e.text) + "</p></div>";
-    }).join("");
+    $("dine").innerHTML = cards(ev.essen, false);
 
     var ph = $("price-hero");
     if (ph.classList.contains("in")) each(ph.querySelectorAll("[data-count]"), function (x) { countUp(x, +x.getAttribute("data-count")); });
@@ -331,18 +366,16 @@
   }
 
   function setEvent(key, push) {
-    if (!state.data.events[key] || key === state.event) return;
+    if (!state.data.events[key]) return;
+    if (key === state.event) return;
     state.event = key;
     store("jga-event", key);
-    if (push && history.replaceState) history.replaceState(null, "", "#" + key);
-    var box = $("event-content"), gl = $("glance");
+    if (push && history.replaceState) history.replaceState(null, "", "#details");
+    var box = $("event-content");
     if (reduce) { renderEvent(); return; }
-    box.style.transition = gl.style.transition = "opacity .3s ease";
-    box.style.opacity = gl.style.opacity = "0";
-    setTimeout(function () {
-      renderEvent();
-      box.style.opacity = gl.style.opacity = "1";
-    }, 300);
+    box.style.transition = "opacity .3s ease";
+    box.style.opacity = "0";
+    setTimeout(function () { renderEvent(); box.style.opacity = "1"; }, 300);
   }
 
   function chooseInitialEvent(d) {
@@ -359,7 +392,7 @@
     if (state.data && state.data.events[h]) setEvent(h, false);
   });
 
-  /* ---------- Scroll: Nav Linie, Hero zieht sich zurueck wie bei Apple ---------- */
+  /* ---------- Scroll: Nav Linie, Hero zieht sich zurueck ---------- */
   var heroIn = $("hero-in"), ticking = false;
   window.addEventListener("scroll", function () {
     if (ticking) return;

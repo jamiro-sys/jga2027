@@ -317,3 +317,80 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .card,.ph,.cost-card,.panel,.day{padding:26px 22px}
   .card .price{font-size:52px}
 }
+
+/* ===== Version 4: Vergleich auf der Startseite ===== */
+.hero-cta{margin-top:18px}
+.js .hero-cta{opacity:0;animation:up 1.1s var(--ease) .44s forwards}
+@media (prefers-reduced-motion:reduce){.js .hero-cta{opacity:1}}
+
+/* Cockpit mit zwei Instrumenten */
+.cockpit .wrap{position:relative;z-index:1;padding-block:64px 72px}
+.cockpit-label{text-align:center;margin-bottom:28px}
+.gauges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.gcol{display:grid;justify-items:center;gap:14px;text-align:center}
+.gcol .gauge{width:min(320px,100%)}
+.gname{font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.gdate{font-size:13px;color:var(--steel)}
+.gcount{display:flex;gap:18px;justify-content:center}
+.gcount div{display:grid;gap:0}
+.gcount strong{font-family:var(--tech);font-size:34px;font-weight:400;line-height:1}
+.gcount strong.flip{animation:roll .45s var(--ease)}
+.gcount span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--steel)}
+
+/* Vergleich */
+.compare{background:var(--card);border-radius:var(--r);padding:8px 0 10px;overflow:hidden}
+.cmp-head{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.cmp-col{padding:34px 28px 28px;display:grid;justify-items:center;gap:8px;text-align:center}
+.cmp-col + .cmp-col{border-left:1px solid var(--line)}
+.cmp-col .t-stripe{margin-bottom:4px}
+.cmp-name{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.cmp-place{font-size:14px;color:var(--taupe)}
+.cmp-date{font-family:var(--tech);font-size:22px;letter-spacing:.02em;margin-top:4px}
+.cmp-col .btn{margin-top:12px}
+.cmp-row{border-top:1px solid var(--line);padding:18px 0 16px}
+.cmp-label{text-align:center;font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:8px}
+.cmp-cells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.cmp-cells > div{padding:0 24px;text-align:center;font-size:15px;line-height:1.45;display:grid;justify-items:center;gap:4px}
+.cmp-cells > div + div{border-left:1px solid var(--line)}
+.cmp-big{font-family:var(--tech);font-size:clamp(34px,4.4vw,52px);font-weight:500;line-height:1}
+.cmp-big small{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--taupe);margin-left:4px}
+.cmp-sub{font-size:13px;color:var(--taupe)}
+.win{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 9px;border-radius:980px;background:rgba(28,60,140,.1);color:var(--m-dark)}
+
+/* Detailleiste, bleibt unter der Navigation stehen */
+.detailbar{position:sticky;top:calc(48px + env(safe-area-inset-top,0px));z-index:25;background:rgba(243,239,232,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.detailbar-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px max(22px, env(safe-area-inset-right, 0px)) 10px max(22px, env(safe-area-inset-left, 0px))}
+.detailbar-title{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.detailbar .seg{margin-top:0}
+.detailbar .seg button{padding:7px 18px;font-size:13px}
+html{scroll-padding-top:110px}
+
+/* Erlebnisse und Essen */
+.eat .eat-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.eat .price-line{font-family:var(--tech);font-size:19px;letter-spacing:.02em;color:var(--ink)}
+.eat .link{margin-top:6px}
+.eat.feature{background:var(--graphite);color:#f2f2f2}
+.eat.feature p,.eat.feature .label{color:var(--steel)}
+.eat.feature .link{color:#f2f2f2}
+.eat.feature .chip{background:rgba(255,255,255,.1);color:#e6e6e6}
+.chip.blue{background:rgba(28,60,140,.1);color:var(--m-dark)}
+.stay .plat{font-size:11.5px;font-weight:600;color:var(--ink)}
+.stay .plat.airbnb{color:#c9364f}
+
+@media (max-width:760px){
+  .gauges{gap:18px}
+  .gcount{gap:10px}
+  .gcount strong{font-size:26px}
+  .gname{font-size:11px;letter-spacing:.18em}
+  .cmp-col{padding:26px 12px 22px}
+  .cmp-cells > div{padding:0 12px;font-size:14px}
+  .cmp-col .btn{padding:9px 14px;font-size:13px}
+  .detailbar-title{display:none}
+  .detailbar-in{justify-content:center}
+}
+@media (max-width:420px){
+  .gcount span{font-size:9px;letter-spacing:.14em}
+  .gcount strong{font-size:22px}
+  .cmp-cells > div{padding:0 8px;font-size:13px}
+  .cmp-place{font-size:12px}
+}
