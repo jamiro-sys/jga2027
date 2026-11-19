@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JGA 2027</title>
+<meta name="description" content="Alles zum Junggesellenabschied 2027: Programm, Tickets, Unterkunft, Kosten.">
+<meta name="theme-color" content="#0d3b2a">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Nach oben">JGA <span>2027</span></a>
+    <nav class="nav" aria-label="Abschnitte">
+      <a href="#programm">Programm</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#unterkunft">Unterkunft</a>
+      <a href="#kosten">Kosten</a>
+      <a href="#essen">Essen</a>
+      <a href="#todo">To do</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<main id="inhalt">
+  <section class="hero">
+    <div class="dial" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="eyebrow" id="hero-eyebrow">Junggesellenabschied 2027</p>
+      <h1 id="hero-title">Vierundzwanzig Stunden.<br><em>Ein Wochenende.</em></h1>
+      <div class="rule"></div>
+      <p class="lead" id="hero-lead">Daten werden geladen.</p>
+      <div class="switch" role="tablist" aria-label="Rennen wählen" id="switch"></div>
+      <p class="decision" id="decision"></p>
+      <div class="countdown" id="countdown" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="updates-band">
+    <div class="wrap">
+      <div class="updates" id="updates"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="facts" id="facts"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="programm">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Ablauf</p><h2>Programm</h2></div>
+      <div class="days" id="days"></div>
+    </div>
+  </section>
+
+  <section class="block" id="tickets">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Eintritt und Kartbahn</p><h2>Tickets</h2></div>
+      <div class="tickets" id="ticket-box"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="unterkunft">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Alle mit Parkplatz für den Bus</p><h2>Unterkunft</h2></div>
+      <div class="filter" role="group" aria-label="Lage filtern" id="zone-filter">
+        <button type="button" data-zone="alle" aria-pressed="true">Alle</button>
+        <button type="button" data-zone="strecke" aria-pressed="false">Nahe Strecke</button>
+        <button type="button" data-zone="stadt" aria-pressed="false">In der Stadt</button>
+      </div>
+      <p class="availability" id="availability"></p>
+      <div class="stays" id="stays"></div>
+      <div class="live">
+        <h3>Weitere Unterkünfte live suchen</h3>
+        <p>Mit euren Daten, 6 Personen und Parkplatz Filter.</p>
+        <div class="live-links" id="live-links"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="kosten">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Pro Zahler, Bräutigam eingeladen</p><h2>Kosten</h2></div>
+      <div class="cost-grid">
+        <div class="table-wrap"><table class="costs" id="costs"></table></div>
+        <p class="note" id="cost-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="essen">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Gute Küche, kleine Bars</p><h2>Tafel und Bar</h2></div>
+      <div class="dine" id="dine"></div>
+    </div>
+  </section>
+
+  <section class="block dark" id="todo">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Vorbereitung</p><h2>To do und Packliste</h2></div>
+      <div class="todo-grid">
+        <ul class="tasks" id="tasks"></ul>
+        <div class="pack">
+          <h3>Packliste</h3>
+          <p class="pack-hint">Zum Abhaken, wird nur auf deinem Gerät gespeichert.</p>
+          <ul id="pack"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p id="stand">Stand</p>
+    <p>Start in Landschlacht TG</p>
+  </div>
+</footer>
+
+<noscript><p class="noscript">Bitte JavaScript aktivieren, damit die Inhalte angezeigt werden.</p></noscript>
+<script src="assets/app.js"></script>
+</body>
+</html>

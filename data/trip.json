@@ -1,0 +1,584 @@
+{
+  "stand": "2026-11-19",
+  "titel": "JGA 2027",
+  "untertitel": "Vierundzwanzig Stunden. Ein Wochenende.",
+  "einleitung": "Sechs Freunde, ein eigener Bus und ein Langstreckenklassiker. Hier findet ihr alles zum Wochenende: Programm, Tickets, Unterkunft, Kosten und was noch zu tun ist.",
+  "start": "Landschlacht TG",
+  "teilnehmer": 6,
+  "zahler": 5,
+  "entscheid": null,
+  "entscheidHinweis": "Noch offen: Spa oder Nürburgring. Entscheid bis Ende November 2026.",
+  "updates": [
+    {
+      "datum": "2026-11-19",
+      "text": "Webseite ist online. Bitte bis Ende November sagen, ob ihr lieber an den Nürburgring oder nach Spa wollt."
+    }
+  ],
+  "events": {
+    "nuerburgring": {
+      "name": "24h Nürburgring",
+      "ort": "Nürburg, Deutschland",
+      "abreise": "2027-05-28T07:00",
+      "reise": "Fr 28. bis So 30. Mai 2027",
+      "rennen": "Start Samstag ca. 15 bis 16 Uhr, Ziel Sonntag",
+      "distanz": "ca. 530 km, 5.5 Std.",
+      "route": "Konstanz, Stuttgart, Karlsruhe, Koblenz. Keine Maut, keine Vignette.",
+      "tickets": {
+        "titel": "Eventticket Donnerstag bis Sonntag",
+        "preis": "74 EUR pro Person (Preis 2026)",
+        "inklusive": "Alle offenen Tribünen und Zuschauerbereiche an Nordschleife und Grand Prix Strecke, Fan Shuttle",
+        "status": "Vorverkauf 2027 startet voraussichtlich Ende November 2026. 2026 waren alle Mehrtagestickets vor dem Rennen ausverkauft.",
+        "links": [
+          {
+            "label": "Offizieller Ticketshop Nürburgring",
+            "url": "https://nuerburgring.de"
+          },
+          {
+            "label": "Offizielle Seite ADAC 24h Rennen",
+            "url": "https://www.24h-rennen.de/en/home/"
+          }
+        ],
+        "warnung": "Nur offiziell kaufen. Drittseiten wie nurburgring24h.com verlangen 99 statt 74 EUR."
+      },
+      "kart": {
+        "name": "Ring Kartbahn",
+        "text": "Indoor Kartbahn direkt am Ring, wetterfest. 15 EUR pro 10 Minuten, keine Reservation nötig. Vorher anrufen, ob sie am Rennwochenende offen hat.",
+        "telefon": "+49 2691 302 630",
+        "url": "https://nuerburgring.de/experience/at-the-ring/ringkartbahn?locale=en"
+      },
+      "programm": [
+        {
+          "tag": "Freitag",
+          "datum": "28. Mai",
+          "punkte": [
+            {
+              "zeit": "07:00",
+              "text": "Abfahrt in Landschlacht mit dem Bus."
+            },
+            {
+              "zeit": "12:30",
+              "text": "Mittag im Café zur Nordschleife bei der Brücke Breidscheid, die Autos fahren 30 m an der Terrasse vorbei."
+            },
+            {
+              "zeit": "Nachm.",
+              "text": "Top Qualifying, danach Kartrennen in der Ring Kartbahn."
+            },
+            {
+              "zeit": "Abend",
+              "text": "Steak auf dem heissen Stein in der Pistenklause, danach Drift Show und Bar."
+            }
+          ]
+        },
+        {
+          "tag": "Samstag",
+          "datum": "29. Mai",
+          "punkte": [
+            {
+              "zeit": "Morgen",
+              "text": "Ausschlafen, Fahrerlager oder ADAC 24h Classic."
+            },
+            {
+              "zeit": "15 bis 16",
+              "text": "Rennstart.",
+              "highlight": true
+            },
+            {
+              "zeit": "Abend",
+              "text": "Mit dem Fan Shuttle an die Nordschleife: Brünnchen und Pflanzgarten mit Grill und Stimmung."
+            },
+            {
+              "zeit": "Nacht",
+              "text": "Rennen in der Dunkelheit, XXL Pizza bei Pinocchio in Adenau."
+            }
+          ]
+        },
+        {
+          "tag": "Sonntag",
+          "datum": "30. Mai",
+          "punkte": [
+            {
+              "zeit": "Morgen",
+              "text": "Sonnenaufgang oder Frühstück, Morgenstimmung an der Strecke."
+            },
+            {
+              "zeit": "15 bis 16",
+              "text": "Zieleinlauf.",
+              "highlight": true
+            },
+            {
+              "zeit": "22:00",
+              "text": "Ankunft in Landschlacht."
+            }
+          ]
+        }
+      ],
+      "liveSuche": [
+        {
+          "label": "Booking: Unterkünfte mit Parkplatz am Ring",
+          "url": "https://www.booking.com/searchresults.de.html?ss=N%C3%BCrburg&checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3&nflt=hotelfacility%3D2"
+        },
+        {
+          "label": "Airbnb: Häuser für 6 mit Parkplatz in Adenau",
+          "url": "https://www.airbnb.ch/s/Adenau/homes?checkin=2027-05-28&checkout=2027-05-30&adults=6&amenities%5B%5D=9"
+        },
+        {
+          "label": "Booking: Cochem mit Parkplatz",
+          "url": "https://www.booking.com/searchresults.de.html?ss=Cochem&checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3&nflt=hotelfacility%3D2"
+        }
+      ],
+      "unterkuenfte": [
+        {
+          "zone": "strecke",
+          "name": "Gästehaus Adenau",
+          "ort": "Adenau, ca. 10 Min. zum Ring",
+          "typ": "Ganze Wohnung",
+          "platz": "6 Gäste, 3 Schlafzimmer, 1 Bad",
+          "parkplatz": "Gratis Parkplatz beim Haus",
+          "preis": "ab ca. 272 EUR pro Nacht",
+          "status": "pruefen",
+          "url": "https://www.holidu.de/d/49169883",
+          "linkLabel": "Angebot ansehen"
+        },
+        {
+          "zone": "strecke",
+          "name": "Hotel Am Tiergarten",
+          "ort": "Kirchweg 4, Nürburg, direkt am Ring",
+          "typ": "Hotel, 3 Doppelzimmer",
+          "platz": "44 Doppel und 3 Familienzimmer",
+          "parkplatz": "Eigener Parkplatz, gratis",
+          "preis": "Preis live prüfen",
+          "hinweis": "Die Pistenklause ist im gleichen Haus.",
+          "status": "pruefen",
+          "url": "https://www.booking.com/hotel/de/am-tiergarten-nurburg.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
+          "linkLabel": "Verfügbarkeit prüfen"
+        },
+        {
+          "zone": "strecke",
+          "name": "Dorint Am Nürburgring Hocheifel",
+          "ort": "An der Start und Zielgeraden, Nürburg",
+          "typ": "Hotel, 3 Doppelzimmer",
+          "platz": "207 Zimmer",
+          "parkplatz": "Hotelparkplatz, vor Buchung bestätigen",
+          "preis": "Preis live prüfen",
+          "hinweis": "Telefon Hotel: +49 2691 309 0",
+          "status": "pruefen",
+          "url": "https://eifel-nuerburgring.dorint.com/en/overview/",
+          "linkLabel": "Offizielle Webseite"
+        },
+        {
+          "zone": "stadt",
+          "name": "Hotel Vintage am Bundesbank Bunker",
+          "ort": "Cochem, 600 m zur Altstadt, ca. 45 Min. zum Ring",
+          "typ": "Hotel, 3 Doppelzimmer",
+          "platz": "",
+          "parkplatz": "Parkplatz beim Hotel, gratis",
+          "preis": "ab ca. 112 EUR pro Zimmer und Nacht",
+          "status": "pruefen",
+          "url": "https://www.booking.com/hotel/de/vintage-am-bundesbank-bunker.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
+          "linkLabel": "Verfügbarkeit prüfen"
+        },
+        {
+          "zone": "stadt",
+          "name": "Moselromantik Hotel Kessler Meyer",
+          "ort": "Cochem, 1.4 km zur Altstadt",
+          "typ": "Hotel mit Wellness, nur Erwachsene",
+          "platz": "",
+          "parkplatz": "Parkplatz beim Hotel, gratis",
+          "preis": "ab ca. 171 EUR pro Zimmer und Nacht",
+          "status": "pruefen",
+          "url": "https://www.booking.com/hotel/de/moselromantikhotelkesslermeyer.html?checkin=2027-05-28&checkout=2027-05-30&group_adults=6&no_rooms=3",
+          "linkLabel": "Verfügbarkeit prüfen"
+        },
+        {
+          "zone": "stadt",
+          "name": "Hotel Karl Noss",
+          "ort": "Cochem, an der Moselpromenade, 350 m zur Altstadt",
+          "typ": "Hotel, 3 Doppelzimmer",
+          "platz": "",
+          "parkplatz": "Parkplatz 10 EUR pro Tag",
+          "preis": "ab ca. 87 EUR pro Zimmer und Nacht",
+          "status": "pruefen",
+          "url": "https://www.hotelspecials.de/de/rheinland-pfalz/cochem/parkplatz",
+          "linkLabel": "Angebot ansehen"
+        }
+      ],
+      "essen": [
+        {
+          "ort": "Nürburg",
+          "name": "Pistenklause",
+          "text": "Kultlokal voller Rennfotos und Autogramme. Steak auf dem heissen Stein, ab 16 Uhr, früh reservieren."
+        },
+        {
+          "ort": "Adenau",
+          "name": "Pinocchio",
+          "text": "Pizza mit 60 cm für die ganze Runde. Vorher anrufen."
+        },
+        {
+          "ort": "Adenau",
+          "name": "Trattoria Ventisette",
+          "text": "Gutes Italienisch mit Blick auf die Strecke bei der Brücke Breidscheid."
+        },
+        {
+          "ort": "Adenau",
+          "name": "Café zur Nordschleife",
+          "text": "Currywurst direkt an der Strecke, schliesst um 19 Uhr."
+        },
+        {
+          "ort": "Nürburg",
+          "name": "Paddock Restaurant",
+          "text": "Im Motorsport Hotel, bekannt für Schnitzel, Terrasse mit Blick auf die Burg."
+        },
+        {
+          "ort": "Nordschleife",
+          "name": "An der Strecke",
+          "text": "Grill und Bier bei Brünnchen und Pflanzgarten, mitten unter den Fans."
+        }
+      ],
+      "kosten": {
+        "spalten": [
+          "Nahe Strecke",
+          "In der Stadt"
+        ],
+        "zeilen": [
+          {
+            "posten": "Tickets 6 Personen, Eventticket 74 EUR",
+            "werte": [
+              415,
+              415
+            ]
+          },
+          {
+            "posten": "Unterkunft, 2 Nächte",
+            "werte": [
+              660,
+              600
+            ]
+          },
+          {
+            "posten": "Diesel eigener Bus, ca. 1100 km",
+            "werte": [
+              160,
+              175
+            ]
+          },
+          {
+            "posten": "Kartrennen, 3 mal 10 Min.",
+            "werte": [
+              250,
+              250
+            ]
+          }
+        ]
+      }
+    },
+    "spa": {
+      "name": "24h Spa",
+      "ort": "Spa Francorchamps, Belgien",
+      "abreise": "2027-06-25T06:30",
+      "reise": "Fr 25. bis So 27. Juni 2027",
+      "rennen": "Samstag 16:30 bis Sonntag 16:30",
+      "distanz": "ca. 600 km, 6.5 Std.",
+      "route": "Konstanz, Karlsruhe, Koblenz, Prüm. Keine Maut.",
+      "tickets": {
+        "titel": "Generalticket mit Paddock, Mittwoch bis Sonntag",
+        "preis": "82 EUR pro Person (Preis 2026)",
+        "inklusive": "Alle Tribünen, Fan Village mit Konzerten, Paddock und Pit Walks",
+        "status": "Tickets 2027 sind bereits bei Ticketmaster Belgien gelistet.",
+        "links": [
+          {
+            "label": "Offizielle Ticketseite 24h Spa",
+            "url": "https://www.crowdstrike24hoursofspa.com/entry-tickets"
+          },
+          {
+            "label": "Ticketmaster Belgien (offizieller Verkauf)",
+            "url": "https://www.ticketmaster.be/artist/crowdstrike-24-hours-of-spa-tickets/955967"
+          }
+        ],
+        "warnung": "Nur über die offizielle Seite oder Ticketmaster kaufen. Weiterverkauf über dem Originalpreis ist verboten."
+      },
+      "kart": {
+        "name": "Karting Spa Francorchamps",
+        "text": "Outdoor Kartbahn mit 1092 m im Streckengelände. 30 Minuten kosten 55 EUR pro Person. Online reservieren.",
+        "telefon": "+32 87 27 58 54",
+        "url": "https://www.francorchamps-karting.be/reservation.html"
+      },
+      "programm": [
+        {
+          "tag": "Freitag",
+          "datum": "25. Juni",
+          "punkte": [
+            {
+              "zeit": "06:30",
+              "text": "Abfahrt in Landschlacht mit dem Bus."
+            },
+            {
+              "zeit": "13:00",
+              "text": "Mittag im Le Formule Un, 50 m neben der Strecke."
+            },
+            {
+              "zeit": "Nachm.",
+              "text": "Paddock und Boxengasse, Track Walk zur Eau Rouge."
+            },
+            {
+              "zeit": "16:30",
+              "text": "Kartrennen auf der Karting Spa Francorchamps."
+            },
+            {
+              "zeit": "Abend",
+              "text": "Belgisches Bier in Stavelot oder Malmedy, Konzert im Fan Village."
+            }
+          ]
+        },
+        {
+          "tag": "Samstag",
+          "datum": "26. Juni",
+          "punkte": [
+            {
+              "zeit": "Morgen",
+              "text": "Ausschlafen, Startaufstellung und Pit Walk."
+            },
+            {
+              "zeit": "16:30",
+              "text": "Rennstart.",
+              "highlight": true
+            },
+            {
+              "zeit": "Abend",
+              "text": "An der Eau Rouge und am Raidillon, später Tribüne bei La Source."
+            },
+            {
+              "zeit": "Nacht",
+              "text": "Rennen in der Dunkelheit, Konzert im Fan Village."
+            }
+          ]
+        },
+        {
+          "tag": "Sonntag",
+          "datum": "27. Juni",
+          "punkte": [
+            {
+              "zeit": "Morgen",
+              "text": "Frühstück, Morgenstimmung an der Strecke."
+            },
+            {
+              "zeit": "16:30",
+              "text": "Zieleinlauf.",
+              "highlight": true
+            },
+            {
+              "zeit": "23:30",
+              "text": "Ankunft in Landschlacht. Wer früher heim will, fährt um 12 Uhr und schaut das Finale im Livestream."
+            }
+          ]
+        }
+      ],
+      "liveSuche": [
+        {
+          "label": "Booking: Unterkünfte mit Parkplatz in Stavelot",
+          "url": "https://www.booking.com/searchresults.de.html?ss=Stavelot&checkin=2027-06-25&checkout=2027-06-27&group_adults=6&no_rooms=3&nflt=hotelfacility%3D2"
+        },
+        {
+          "label": "Airbnb: Häuser für 6 mit Parkplatz in Malmedy",
+          "url": "https://www.airbnb.ch/s/Malmedy/homes?checkin=2027-06-25&checkout=2027-06-27&adults=6&amenities%5B%5D=9"
+        },
+        {
+          "label": "Booking: Spa mit Parkplatz",
+          "url": "https://www.booking.com/searchresults.de.html?ss=Spa%2C%20Belgien&checkin=2027-06-25&checkout=2027-06-27&group_adults=6&no_rooms=3&nflt=hotelfacility%3D2"
+        }
+      ],
+      "unterkuenfte": [
+        {
+          "zone": "strecke",
+          "name": "Hôtel de la Source",
+          "ort": "Route du Circuit 22, Francorchamps, 1 Min. zum Haupteingang",
+          "typ": "Hotel",
+          "platz": "2 Zimmer für je 3 Personen",
+          "parkplatz": "Parkplatz 10 EUR pro Nacht, Gratis Plätze in der Strasse",
+          "preis": "Preis live prüfen",
+          "hinweis": "Restaurant The Legends direkt über der Haarnadel La Source.",
+          "status": "pruefen",
+          "url": "https://www.hotels.com/ho361305/hotel-de-la-source-stavelot-belgium",
+          "linkLabel": "Verfügbarkeit prüfen"
+        },
+        {
+          "zone": "strecke",
+          "name": "Fachwerkhaus Stavelot",
+          "ort": "Stavelot, ca. 10 Min. zur Strecke",
+          "typ": "Ganzes Haus",
+          "platz": "6 Gäste, 3 Schlafzimmer, 2 Bäder",
+          "parkplatz": "Privater Parkplatz für 3 Autos",
+          "preis": "Preis live prüfen",
+          "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären, dass ihr eine ruhige Gruppe seid.",
+          "status": "pruefen",
+          "url": "https://en.ardennes-etape.be/holiday-houses-ardennes/Stavelot/Holiday-cottage-105357-01",
+          "linkLabel": "Angebot ansehen"
+        },
+        {
+          "zone": "strecke",
+          "name": "Ferienhaus Stavelot",
+          "ort": "Stavelot, nahe der Strecke",
+          "typ": "Ganzes Haus",
+          "platz": "6 Gäste, 3 Schlafzimmer, 2 Bäder",
+          "parkplatz": "Privater Parkplatz für 3 Autos plus Carport",
+          "preis": "Preis live prüfen",
+          "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären.",
+          "status": "pruefen",
+          "url": "https://en.ardennes-etape.be/holiday-houses-ardennes/Stavelot/Holiday-cottage-107893-01/",
+          "linkLabel": "Angebot ansehen"
+        },
+        {
+          "zone": "stadt",
+          "name": "Le Val d'Arimont",
+          "ort": "Chemin du Val 30, Malmedy, ca. 10 Min. ins Zentrum",
+          "typ": "Hotel",
+          "platz": "Family Loft für 6 Personen",
+          "parkplatz": "Gratis Parkplatz beim Hotel, E Ladestation",
+          "preis": "Preis live prüfen",
+          "hinweis": "Alle sechs in einem Loft, ideal für die Gruppe.",
+          "status": "pruefen",
+          "url": "https://ie.hotels.com/ho600769/le-val-d-arimont-hotel-malmedy-belgium",
+          "linkLabel": "Verfügbarkeit prüfen"
+        },
+        {
+          "zone": "stadt",
+          "name": "Ferienhaus Spa",
+          "ort": "Spa, zu Fuss ins Zentrum",
+          "typ": "Ganzes Haus",
+          "platz": "6 Gäste, 3 Schlafzimmer, 2 Bäder",
+          "parkplatz": "Privater Parkplatz für 3 Autos",
+          "preis": "Preis live prüfen",
+          "hinweis": "Vermieter verbietet Junggesellenpartys. Vor der Buchung klären.",
+          "status": "pruefen",
+          "url": "https://www.ardennes-etape.co.uk/holiday-houses-ardennes/Spa/Holiday-cottage-107789-01",
+          "linkLabel": "Angebot ansehen"
+        },
+        {
+          "zone": "stadt",
+          "name": "Radisson Blu Balmoral",
+          "ort": "Spa, nahe Zentrum, ca. 15 Min. zur Strecke",
+          "typ": "Hotel",
+          "platz": "Familienzimmer für 4 plus Doppelzimmer",
+          "parkplatz": "Parkplatz 10 EUR pro Tag, wenige Plätze",
+          "preis": "Preis live prüfen",
+          "status": "pruefen",
+          "url": "https://au.hotels.com/ho192784/radisson-blu-balmoral-hotel-spa-spa-belgium",
+          "linkLabel": "Verfügbarkeit prüfen"
+        }
+      ],
+      "essen": [
+        {
+          "ort": "Francorchamps",
+          "name": "Le Formule Un",
+          "text": "Bar und Restaurant 50 m neben der Strecke. Steak Frites, Boulets liégeois und Bordeaux vom eigenen Weingut."
+        },
+        {
+          "ort": "Stavelot",
+          "name": "The Legends",
+          "text": "Im Hôtel de la Source über der Haarnadel La Source. Menüs ab ca. 39 EUR, ideal für den Abend mit dem Bräutigam."
+        },
+        {
+          "ort": "Stavelot, Malmedy",
+          "name": "Brasserien",
+          "text": "Belgisches Bier vom Fass, Fritten und Ardennen Schinken."
+        },
+        {
+          "ort": "An der Strecke",
+          "name": "Fan Village",
+          "text": "Foodtrucks und Konzerte von Donnerstag bis Samstag."
+        }
+      ],
+      "kosten": {
+        "spalten": [
+          "Nahe Strecke",
+          "In der Stadt"
+        ],
+        "zeilen": [
+          {
+            "posten": "Tickets 6 Personen, Generalticket mit Paddock 82 EUR",
+            "werte": [
+              460,
+              460
+            ]
+          },
+          {
+            "posten": "Unterkunft, 2 Nächte",
+            "werte": [
+              760,
+              680
+            ]
+          },
+          {
+            "posten": "Diesel eigener Bus, ca. 1250 km",
+            "werte": [
+              185,
+              190
+            ]
+          },
+          {
+            "posten": "Kartrennen, 30 Min.",
+            "werte": [
+              305,
+              305
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "kostenHinweis": "Alle Beträge in CHF (1 EUR = 0.93 CHF), Gruppenkosten geteilt durch 5 Zahler. Der Bräutigam ist eingeladen. Essen und Trinken sind nicht eingerechnet: ca. 70 CHF pro Person und Tag, für den Bräutigam mitbezahlt ca. 210 CHF mehr pro Zahler.",
+  "verfuegbarkeit": "Stand 19. November 2026: Die meisten Hotels und Ferienhäuser zeigen für Mai und Juni 2027 noch keinen Kalender. Mit den Knöpfen prüft ihr live mit euren Daten, 6 Personen und Parkplatz Filter.",
+  "checkliste": [
+    {
+      "frist": "Ende Nov. 2026",
+      "text": "Mit allen sechs entscheiden: Spa oder Nürburgring.",
+      "erledigt": false
+    },
+    {
+      "frist": "Tickets",
+      "text": "Sobald der Vorverkauf läuft, 6 Tickets über den offiziellen Shop kaufen.",
+      "erledigt": false
+    },
+    {
+      "frist": "Ende Dez. 2026",
+      "text": "Unterkunft mit Parkplatz buchen, kostenlos stornierbar wählen.",
+      "erledigt": false
+    },
+    {
+      "frist": "Kartrennen",
+      "text": "Spa online reservieren oder Ring Kartbahn anrufen.",
+      "erledigt": false
+    },
+    {
+      "frist": "Restaurant",
+      "text": "Pistenklause oder The Legends für Freitagabend reservieren.",
+      "erledigt": false
+    },
+    {
+      "frist": "Ferien",
+      "text": "Alle geben den Freitag als Ferientag ein.",
+      "erledigt": false
+    },
+    {
+      "frist": "Fahrer",
+      "text": "Festlegen, wer am Sonntag heimfährt. Er trinkt am Samstag nichts.",
+      "erledigt": false
+    },
+    {
+      "frist": "Bus",
+      "text": "Service prüfen, grüne Umweltplakette für Deutschland besorgen.",
+      "erledigt": false
+    }
+  ],
+  "packliste": [
+    "ID oder Pass",
+    "Ticket auf dem Handy",
+    "Gehörschutz",
+    "Regenjacke",
+    "Warme Jacke für die Nacht",
+    "Bequeme Schuhe",
+    "Powerbank",
+    "Sonnencreme und Cap",
+    "Euro in bar",
+    "Handschuhe fürs Kartrennen"
+  ]
+}
